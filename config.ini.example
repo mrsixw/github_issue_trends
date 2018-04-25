@@ -1,0 +1,6 @@
+[github]
+user = mrsixw
+password = yeah_right
+query =  -label:epic repo:mrsixw/github_issue_tracker type:issue
+items_per_page = 100
+
