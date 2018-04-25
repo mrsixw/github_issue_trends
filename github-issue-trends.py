@@ -5,6 +5,7 @@ import json
 from pprint import pprint
 import configparser
 
+
 if __name__ == '__main__':
 
     config = configparser.ConfigParser()
@@ -35,7 +36,12 @@ if __name__ == '__main__':
 
             for item in github_response['items']:
 
-                print("{}\n".format(item))
+                type = ''
+                for lab in item['labels']:
+                    if lab['name'] in ['bug', 'feature','enhancement']:
+                        type = lab['name']
+
+                print("#{}\t{}\t{}".format(item['number'],item['created_at'],type))
 
 
         else:
