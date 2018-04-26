@@ -22,7 +22,7 @@ if __name__ == '__main__':
                                                                                                 config['github']['items_per_page'],
                                                                                                 config['github']['query']),
                           auth=(config['github']['user'], config['github']['password']))
-        print("Status code {}, page {} items_per_page {}".format(r.status_code, page, config['github']['items_per_page']))
+        #print("Status code {}, page {} items_per_page {}".format(r.status_code, page, config['github']['items_per_page']))
 
 
 
@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
             github_response = json.loads(r.text)
 
-            print("items {}".format(len(github_response['items'])))
+            #print("items {}".format(len(github_response['items'])))
             items_returned = len(github_response['items'])
 
             for item in github_response['items']:
@@ -41,7 +41,10 @@ if __name__ == '__main__':
                     if lab['name'] in ['bug', 'feature','enhancement']:
                         type = lab['name']
 
-                print("#{}\t{}\t{}".format(item['number'],item['created_at'],type))
+                print("#{}\t{}\t{}\t{}".format(item['number'],
+                                                type,
+                                                item['created_at'],
+                                                item['closed_at']))
 
 
         else:
